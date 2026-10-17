@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\NiTro\\OneDrive\\Desktop\\Project\\HappyJumpingFrog\\HappyJumpingFrog\\HappyJumpingFrog\\HappyJumpingFrog.csproj",
+      "projectUniqueName": "D:\\งาน\\FrogGame\\HappyJumpingFrog\\HappyJumpingFrog\\HappyJumpingFrog.csproj",
       "projectName": "HappyJumpingFrog",
-      "projectPath": "C:\\Users\\NiTro\\OneDrive\\Desktop\\Project\\HappyJumpingFrog\\HappyJumpingFrog\\HappyJumpingFrog\\HappyJumpingFrog.csproj",
+      "projectPath": "D:\\งาน\\FrogGame\\HappyJumpingFrog\\HappyJumpingFrog\\HappyJumpingFrog.csproj",
       "packagesPath": "C:\\Users\\NiTro\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\NiTro\\OneDrive\\Desktop\\Project\\HappyJumpingFrog\\HappyJumpingFrog\\HappyJumpingFrog\\obj\\",
+      "outputPath": "D:\\งาน\\FrogGame\\HappyJumpingFrog\\HappyJumpingFrog\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\NiTro\\AppData\\Roaming\\NuGet\\NuGet.Config",
