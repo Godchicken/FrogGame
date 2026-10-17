@@ -23,7 +23,7 @@ namespace HappyJumpingFrog
             Height = height;
         }
 
-        // กรอบสี่เหลี่ยมของวัตถุ ใช้เช็คการชน
+        // กรอบสี่เหลี่ยมของวัตถุ ใช้เช็คการชน ชนแม่แหม่ม
         public Rectangle Bounds
         {
             get { return new Rectangle(X, Y, Width, Height); }
