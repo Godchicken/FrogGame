@@ -2,7 +2,7 @@
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: ซีน] หน้าชนะเกม (ผ่านครบทุกด่าน)
+    // [เจ้าของ: ซีน] หน้าชนะเกม (ผ่านครบทุกด่าน) ควย
     // สัญญากับ FormGame: ตั้ง FinalScore ก่อน ShowDialog
     //   ปุ่ม Play Again → DialogResult.Retry   |   ปุ่ม Submit Score → DialogResult.OK
     public partial class FormCongratulations : Form
