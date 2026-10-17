@@ -2,7 +2,7 @@
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: กูเอง]  ไอ้เหี้ยซีน
+    // [เจ้าของ: กูเอง] 
     // คลาสแม่ของ "ทุกอย่างที่อยู่ในสนาม" (กบ, รถ, ซุง, ดอกบัว, ไอเท็ม, ถนน, แม่น้ำ)
     public abstract class GameObject
     {
@@ -23,7 +23,7 @@ namespace HappyJumpingFrog
             Height = height;
         }
 
-        // กรอบสี่เหลี่ยมของวัตถุ ใช้เช็คการชน ชนแม่แหม่ม
+        // กรอบสี่เหลี่ยมของวัตถุ ใช้เช็คการชน
         public Rectangle Bounds
         {
             get { return new Rectangle(X, Y, Width, Height); }
