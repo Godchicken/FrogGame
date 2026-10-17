@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- SDK-style csproj: ไฟล์ .cs ทุกไฟล์ในโฟลเดอร์ถูกรวมให้อัตโนมัติ
+       ไม่ต้องลงทะเบียนทีละไฟล์ ไม่เกิด merge conflict ในไฟล์นี้เวลาหลายคนเพิ่มไฟล์พร้อมกัน -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>HappyJumpingFrog</RootNamespace>
+    <AssemblyName>HappyJumpingFrog</AssemblyName>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+</Project>
