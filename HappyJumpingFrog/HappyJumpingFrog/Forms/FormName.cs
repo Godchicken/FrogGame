@@ -16,6 +16,7 @@ namespace HappyJumpingFrog
         public FormName()
         {
             InitializeComponent();
+            textName.MaxLength = 15;
         }
 
         private void buttonOk_Click(object sender, EventArgs e)

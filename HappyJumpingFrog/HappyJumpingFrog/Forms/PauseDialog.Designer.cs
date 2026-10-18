@@ -26,23 +26,24 @@
             // 
             // labelTitle
             // 
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.labelTitle.Location = new System.Drawing.Point(50, 20);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(200, 30);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Paused";
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonContinue
             // 
+            this.buttonContinue.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonContinue.Location = new System.Drawing.Point(80, 70);
             this.buttonContinue.Name = "buttonContinue";
             this.buttonContinue.Size = new System.Drawing.Size(140, 36);
             this.buttonContinue.TabIndex = 1;
             this.buttonContinue.Text = "Continue";
             this.buttonContinue.UseVisualStyleBackColor = true;
-            this.buttonContinue.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonContinue.Click += new System.EventHandler(this.buttonContinue_Click);
             // 
             // buttonSound
             // 
@@ -66,13 +67,14 @@
             // 
             // buttonMenu
             // 
+            this.buttonMenu.DialogResult = System.Windows.Forms.DialogResult.Abort;
             this.buttonMenu.Location = new System.Drawing.Point(80, 205);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(140, 36);
             this.buttonMenu.TabIndex = 4;
             this.buttonMenu.Text = "Back to Menu";
             this.buttonMenu.UseVisualStyleBackColor = true;
-            this.buttonMenu.DialogResult = System.Windows.Forms.DialogResult.Abort;
+            this.buttonMenu.Click += new System.EventHandler(this.buttonMenu_Click);
             // 
             // PauseDialog
             // 
@@ -86,12 +88,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Name = "PauseDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Paused";
             this.Load += new System.EventHandler(this.PauseDialog_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

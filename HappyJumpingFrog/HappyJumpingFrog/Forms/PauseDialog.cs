@@ -40,5 +40,15 @@ namespace HappyJumpingFrog
         {
             UpdateButtons();
         }
+
+        private void buttonContinue_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Abort;
+        }
     }
 }

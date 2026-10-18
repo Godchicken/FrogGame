@@ -17,5 +17,15 @@ namespace HappyJumpingFrog
         {
             InitializeComponent();
         }
+
+        private void buttonTryAgain_Click(object sender, System.EventArgs e)
+        {
+            DialogResult = DialogResult.Retry;
+        }
+
+        private void buttonSubmit_Click(object sender, System.EventArgs e)
+        {
+            DialogResult= DialogResult.OK;
+        }
     }
 }

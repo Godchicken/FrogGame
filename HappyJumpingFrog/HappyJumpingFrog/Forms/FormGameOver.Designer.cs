@@ -26,53 +26,55 @@
             // 
             // labelTitle
             // 
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.labelTitle.Location = new System.Drawing.Point(20, 20);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(300, 36);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Game Over";
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelScoreCaption
             // 
+            this.labelScoreCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelScoreCaption.Location = new System.Drawing.Point(20, 70);
             this.labelScoreCaption.Name = "labelScoreCaption";
             this.labelScoreCaption.Size = new System.Drawing.Size(300, 23);
             this.labelScoreCaption.TabIndex = 1;
             this.labelScoreCaption.Text = "Your score";
-            this.labelScoreCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.labelScoreCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelFinalScore
             // 
+            this.labelFinalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.labelFinalScore.Location = new System.Drawing.Point(20, 95);
             this.labelFinalScore.Name = "labelFinalScore";
             this.labelFinalScore.Size = new System.Drawing.Size(300, 36);
             this.labelFinalScore.TabIndex = 2;
             this.labelFinalScore.Text = "0";
-            this.labelFinalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.labelFinalScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonTryAgain
             // 
+            this.buttonTryAgain.DialogResult = System.Windows.Forms.DialogResult.Retry;
             this.buttonTryAgain.Location = new System.Drawing.Point(40, 160);
             this.buttonTryAgain.Name = "buttonTryAgain";
             this.buttonTryAgain.Size = new System.Drawing.Size(120, 40);
             this.buttonTryAgain.TabIndex = 3;
             this.buttonTryAgain.Text = "Try Again";
             this.buttonTryAgain.UseVisualStyleBackColor = true;
-            this.buttonTryAgain.DialogResult = System.Windows.Forms.DialogResult.Retry;
+            this.buttonTryAgain.Click += new System.EventHandler(this.buttonTryAgain_Click);
             // 
             // buttonSubmit
             // 
+            this.buttonSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSubmit.Location = new System.Drawing.Point(180, 160);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(120, 40);
             this.buttonSubmit.TabIndex = 4;
             this.buttonSubmit.Text = "Submit Score";
             this.buttonSubmit.UseVisualStyleBackColor = true;
-            this.buttonSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // FormGameOver
             // 
@@ -86,11 +88,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Name = "FormGameOver";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Game Over";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

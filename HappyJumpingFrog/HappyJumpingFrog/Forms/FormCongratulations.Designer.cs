@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCongratulations));
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelScoreCaption = new System.Windows.Forms.Label();
             this.labelFinalScore = new System.Windows.Forms.Label();
@@ -26,30 +27,36 @@
             // 
             // labelTitle
             // 
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.labelTitle.Location = new System.Drawing.Point(20, 20);
+            this.labelTitle.Location = new System.Drawing.Point(102, 69);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(300, 36);
+            this.labelTitle.Size = new System.Drawing.Size(117, 29);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "You Win!";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelScoreCaption
             // 
+            this.labelScoreCaption.AutoSize = true;
+            this.labelScoreCaption.BackColor = System.Drawing.Color.Transparent;
             this.labelScoreCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelScoreCaption.Location = new System.Drawing.Point(20, 70);
+            this.labelScoreCaption.Location = new System.Drawing.Point(102, 103);
             this.labelScoreCaption.Name = "labelScoreCaption";
-            this.labelScoreCaption.Size = new System.Drawing.Size(300, 23);
+            this.labelScoreCaption.Size = new System.Drawing.Size(106, 25);
             this.labelScoreCaption.TabIndex = 1;
             this.labelScoreCaption.Text = "Your score";
             this.labelScoreCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelFinalScore
             // 
+            this.labelFinalScore.AutoSize = true;
+            this.labelFinalScore.BackColor = System.Drawing.Color.Transparent;
             this.labelFinalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.labelFinalScore.Location = new System.Drawing.Point(20, 95);
+            this.labelFinalScore.Location = new System.Drawing.Point(147, 128);
             this.labelFinalScore.Name = "labelFinalScore";
-            this.labelFinalScore.Size = new System.Drawing.Size(300, 36);
+            this.labelFinalScore.Size = new System.Drawing.Size(27, 29);
             this.labelFinalScore.TabIndex = 2;
             this.labelFinalScore.Text = "0";
             this.labelFinalScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,10 +81,13 @@
             this.buttonSubmit.TabIndex = 4;
             this.buttonSubmit.Text = "Submit Score";
             this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // FormCongratulations
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(340, 240);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelScoreCaption);
@@ -91,6 +101,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Congratulations!";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
