@@ -53,45 +53,59 @@ namespace HappyJumpingFrog
             for (int i = 0; i < roadLanes; i++)
             {
                 int y = 380 - Cell * i;
-                int startX = (FieldWidth / (roadLanes + 1)) * (i + 1);
+                int laneOffset = rnd.Next(0, 300);
+                int startX1 = (laneOffset) % FieldWidth;
+                int startX2 = (startX1 + FieldWidth / 2 + rnd.Next(-80, 80)) % FieldWidth;
+                int speedVariation = 3 + (i % 3) * 2;
 
                 if (i % 2 == 0)
                 {
-                    int speed = levelSpeed * -1 * 5; // เลนคู่: วิ่งไปทางซ้าย
-                    Items.Add(new Enemy1(startX, y, speed));
+                    int speed = levelSpeed * -1 * speedVariation; // เลนคู่: วิ่งซ้าย
+                    Items.Add(new Enemy1(startX1, y, speed));
+                    Items.Add(new Enemy1(startX2, y, speed));
                 }
                 else
                 {
-                    int speed = levelSpeed * 1 * 5;  // เลนคี่: วิ่งไปทางขวา
-                    Items.Add(new Enemy2(startX, y, speed));
+                    int speed = levelSpeed * 1 * speedVariation;  // เลนคี่: วิ่งขวา
+                    Items.Add(new Enemy2(startX1, y, speed));
+                    Items.Add(new Enemy2(startX2, y, speed));
                 }
             }
             //  2: สร้างซุงเลนแม่น้ำ   (ใช้ Friend1 / Friend2)
             for (int i = 0; i < riverLanes; i++)
             {
                 int y = 340 - Cell * roadLanes - Cell * i;
-                int startX = (FieldWidth / (riverLanes + 1)) * (i + 1);
+
+                int laneOffset = rnd.Next(0, 400);
+                int startX1 = (laneOffset) % FieldWidth;
+                int startX2 = (startX1 + FieldWidth / 2 + rnd.Next(-60, 60)) % FieldWidth;
+
+                int speedVariation = 3 + ((i + 1) % 3) * 2;
 
                 if (i % 2 == 0)
                 {
-                    int speed = levelSpeed * -1 * 5; // เลนคู่: ว่ายไปทางซ้าย
-                    Items.Add(new Friend1(startX, y, speed));
+                    int speed = levelSpeed * -1 * speedVariation; // เลนคู่: ว่ายซ้าย
+                    Items.Add(new Friend1(startX1, y, speed));
+                    Items.Add(new Friend1(startX2, y, speed));
                 }
                 else
                 {
-                    int speed = levelSpeed * 1 * 5;  // เลนคี่: ว่ายไปทางขวา
-                    Items.Add(new Friend2(startX, y, speed));
+                    int speed = levelSpeed * 1 * speedVariation;  // เลนคี่: ว่ายขวา
+                    Items.Add(new Friend2(startX1, y, speed));
+                    Items.Add(new Friend2(startX2, y, speed));
                 }
             }
 
-            // ดอกบัวเป้าหมาย: แบ่งความกว้างเป็น (จำนวนบัว + 1) ช่อง วางที่รอยต่อ
-            for (int i = 0; i < lotusCount; i++)
-            {
-                Items.Add(new TargetLotus(FieldWidth / (lotusCount + 1) * (i + 1), lotusY));
-            }
+                // ดอกบัวเป้าหมาย: แบ่งความกว้างเป็น (จำนวนบัว + 1) ช่อง วางที่รอยต่อ
+                for (int i = 0; i < lotusCount; i++)
+                {
+                    Items.Add(new TargetLotus(FieldWidth / (lotusCount + 1) * (i + 1), lotusY));
+                }
+            
 
-            spawnTicks = rnd.Next(333, 667);
-        }
+                spawnTicks = rnd.Next(333, 667);
+            }
+        
 
         // ลำดับวาด: น้ำ -> ถนน -> วัตถุทั้งหมด (กบวาดทีหลังที่ FormGame)
         public void Draw(Graphics g)

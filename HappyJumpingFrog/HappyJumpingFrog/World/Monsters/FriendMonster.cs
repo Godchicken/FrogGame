@@ -16,13 +16,14 @@
         public override void Update()
         {
             X += speed;
-            if (speed < 0 && X <= 0)
+            
+            if (speed < 0 && X + Width <= 0)
             {
                 X = JumpingField.FieldWidth;
             }
             else if (speed > 0 && X >= JumpingField.FieldWidth)
             {
-                X = 0;
+                X = -Width;
             }
         }
 
