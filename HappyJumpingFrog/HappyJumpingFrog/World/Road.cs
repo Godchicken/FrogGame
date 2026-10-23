@@ -2,7 +2,7 @@
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: หลุย] พื้นที่ถนน (แค่สี่เหลี่ยมสีเทา)
+    // [เจ้าของ: หลุยส์] พื้นที่ถนน (แค่สี่เหลี่ยมสีเทา)
     public class Road : GameObject
     {
         public Road(int x, int y, int width, int height) : base(x, y, width, height) { }

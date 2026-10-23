@@ -2,7 +2,7 @@
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: หลุย] ศัตรูแบบที่ 2 (รถบรรทุก)
+    // [เจ้าของ: หลุยส์] ศัตรูแบบที่ 2 (รถบรรทุก)
     public class Enemy2 : EnemyMonster
     {
         public Enemy2(int x, int y, int speed) : base(x, y, speed) { }

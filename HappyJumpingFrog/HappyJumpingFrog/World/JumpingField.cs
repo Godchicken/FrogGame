@@ -49,20 +49,40 @@ namespace HappyJumpingFrog
             Road = new Road(0, 380 - Cell * (roadLanes - 1), FieldWidth, Cell * roadLanes);
 
             // ----------------------------------------------------------------
-            //  1: สร้างศัตรูเลนถนน   (ใช้ Enemy1 / Enemy2 ที่คุณเขียนเอง)
-            //
-            //   for i = 0 .. roadLanes-1:            // i = 0 คือเลนล่างสุด
-            //       y = 380 - 40 * i
-            //       ถ้า i เป็นเลขคู่:  วิ่งซ้าย  speed = levelSpeed * -1 * 5 → Items.Add(new Enemy1(...))
-            //       ถ้า i เป็นเลขคี่:  วิ่งขวา  speed = levelSpeed * +1 * 5 → Items.Add(new Enemy2(...))
-            //       (x เริ่มต้นกระจายให้ไม่ซ้อนกัน เช่น FieldWidth / (roadLanes+1) * (i+1))
-            //
+            //  1: สร้างศัตรูเลนถนน   (ใช้ Enemy1 / Enemy2)
+            for (int i = 0; i < roadLanes; i++)
+            {
+                int y = 380 - Cell * i;
+                int startX = (FieldWidth / (roadLanes + 1)) * (i + 1);
+
+                if (i % 2 == 0)
+                {
+                    int speed = levelSpeed * -1 * 5; // เลนคู่: วิ่งไปทางซ้าย
+                    Items.Add(new Enemy1(startX, y, speed));
+                }
+                else
+                {
+                    int speed = levelSpeed * 1 * 5;  // เลนคี่: วิ่งไปทางขวา
+                    Items.Add(new Enemy2(startX, y, speed));
+                }
+            }
             //  2: สร้างซุงเลนแม่น้ำ   (ใช้ Friend1 / Friend2)
-            //
-            //   for i = 0 .. riverLanes-1:           // i = 0 คือเลนแม่น้ำล่างสุด
-            //       y = 340 - 40 * roadLanes - 40 * i
-            //       สลับทิศทางซ้าย/ขวา เหมือนเลนถนน
-            // ----------------------------------------------------------------
+            for (int i = 0; i < riverLanes; i++)
+            {
+                int y = 340 - Cell * roadLanes - Cell * i;
+                int startX = (FieldWidth / (riverLanes + 1)) * (i + 1);
+
+                if (i % 2 == 0)
+                {
+                    int speed = levelSpeed * -1 * 5; // เลนคู่: ว่ายไปทางซ้าย
+                    Items.Add(new Friend1(startX, y, speed));
+                }
+                else
+                {
+                    int speed = levelSpeed * 1 * 5;  // เลนคี่: ว่ายไปทางขวา
+                    Items.Add(new Friend2(startX, y, speed));
+                }
+            }
 
             // ดอกบัวเป้าหมาย: แบ่งความกว้างเป็น (จำนวนบัว + 1) ช่อง วางที่รอยต่อ
             for (int i = 0; i < lotusCount; i++)
@@ -87,14 +107,20 @@ namespace HappyJumpingFrog
         // FormGame เรียกทุก tick
         public void UpdateSpawn()
         {
-            //  3: สุ่มเกิดไอเท็ม (Item ของ C) บนถนน
-            //
-            //   spawnTicks -= 1
-            //   ถ้า spawnTicks <= 0:
-            //       เลือกเลนถนนแบบสุ่ม → y = 380 - 40 * lane + 5
-            //       x สุ่ม 0 .. 955
-            //       ชนิดสุ่ม Heart หรือ Time → Items.Add(new Item(x, y, type))
-            //       spawnTicks = สุ่ม 333 .. 667
+            // สุ่มเกิดไอเท็มบนถนน
+            spawnTicks -= 1;
+            if (spawnTicks <= 0)
+            {
+                // สุ่มเลนถนน (0 ถึง roadLanes - 1)
+                int lane = rnd.Next(0, roadLanes);
+                int y = 380 - Cell * lane + 5;
+                int x = rnd.Next(0, 956); // สุ่มตำแหน่งแกน x ในช่วง 0 .. 955
+
+                // สุ่มชนิดไอเท็ม Heart หรือ Time
+                ItemType type = (rnd.Next(2) == 0) ? ItemType.Heart : ItemType.Time;
+                Items.Add(new Item(x, y, type));
+                spawnTicks = rnd.Next(333, 667);
+            }
         }
     }
 }

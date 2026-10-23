@@ -2,7 +2,7 @@
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: B] ซุงแบบที่ 2 (คาปิบาร่าเหมือนกันแต่ชื่อเจมส์)
+    // [เจ้าของ: หลุยส์] ซุงแบบที่ 2 (คาปิบาร่าเหมือนกันแต่ชื่อเจมส์)
     public class Friend2 : FriendMonster
     {
         public Friend2(int x, int y, int speed) : base(x, y, speed) { }
