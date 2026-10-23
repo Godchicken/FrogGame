@@ -10,14 +10,32 @@ namespace HappyJumpingFrog
     {
         public ItemType Type { get; private set; }
 
+        private int lifeTimer = 333;
+
         public Item(int x, int y, ItemType type) : base(x, y, 30, 30)
         {
             Type = type;
         }
 
         //  override Update()  — นับถอยหลังอายุ (เช่น 333 tick) หมดแล้ว IsActive = false
+        public override void Update()
+        {
+            if (!IsActive) return;
+
+            lifeTimer--;
+            if (lifeTimer <= 0)
+            {
+                IsActive = false; // ไอเท็มกระพริบหายไปเพราะหมดเวลา
+            }
+        }
 
         //  override OnHit(PlayerFrog frog) — IsActive = false (เก็บแล้วหายไป)
+        public override void OnHit(PlayerFrog frog)
+        {
+            if (!IsActive) return;
+
+            IsActive = false;
+        }
 
         public override void Draw(Graphics g)
         {
