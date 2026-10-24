@@ -16,7 +16,7 @@ namespace HappyJumpingFrog
     public partial class FormGame : Form
     {
         private readonly GameController controller = new GameController();
-        private readonly PlayerFrog frog = new PlayerFrog(400, 500);
+        private readonly PlayerFrog frog = new PlayerFrog(400, 540);
         private JumpingField field;
         private GameTimer gameTimer;
         

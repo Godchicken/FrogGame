@@ -22,6 +22,8 @@ namespace HappyJumpingFrog
     {
         public const int FieldWidth = 985;
         public const int Cell = 40;
+        public const int BaseY = 500;
+        public const int FieldHeight = 600;
 
         public List<GameObject> Items { get; private set; } = new List<GameObject>();
         public River Water { get; private set; }
@@ -32,27 +34,45 @@ namespace HappyJumpingFrog
         private readonly int riverLanes;
         private readonly int levelSpeed;
         private int spawnTicks;
+        private static readonly Image BgThreeLanes = Properties.Resources.LINE_ALBUM_171069_261024_1;
+        private static readonly Image BgFourLanes = Properties.Resources.LINE_ALBUM_171069_261024_4;
+
+        private readonly Image background;
+        private readonly int srcWaterEnd;    // ขอบล่างของน้ำ ในรูปต้นฉบับ (พิกเซลของรูป)
+        private readonly int srcRoadStart;   // ขอบบนของถนน
+        private readonly int srcRoadEnd;     // ขอบล่างของถนน
 
         public JumpingField(int roadLanes, int riverLanes, int levelSpeed, int lotusCount)
         {
             this.roadLanes = roadLanes;
             this.riverLanes = riverLanes;
             this.levelSpeed = levelSpeed;
+            // เลือกรูปตามจำนวนเลนถนน พร้อมตำแหน่งขอบแต่ละแถบในรูป
+            if (roadLanes == 3)
+            {
+                background = BgThreeLanes;
+                srcWaterEnd = 420; srcRoadStart = 494; srcRoadEnd = 692;
+            }
+            else
+            {
+                background = BgFourLanes;
+                srcWaterEnd = 420; srcRoadStart = 487; srcRoadEnd = 692;
+            }
 
             // y ของแถวดอกบัว = ไต่ขึ้นจาก 340 ทีละ 40 ผ่านเลนถนนและเลนแม่น้ำทั้งหมด
-            int lotusY = 340 - Cell * (roadLanes + riverLanes);
+            int lotusY = (BaseY - Cell) - Cell * (roadLanes + riverLanes);
 
             // น้ำ: เริ่มที่แถวบัว สูงครอบเลนแม่น้ำ + แถวบัว
-            Water = new River(0, lotusY, FieldWidth, Cell * (riverLanes + 1));
+            Water = new River(0, 0, FieldWidth, BaseY - Cell * roadLanes);
 
             // ถนน: y คือเลนบนสุดของถนน
-            Road = new Road(0, 380 - Cell * (roadLanes - 1), FieldWidth, Cell * roadLanes);
+            Road = new Road(0, BaseY - Cell * (roadLanes - 1), FieldWidth, Cell * roadLanes);
 
             // ----------------------------------------------------------------
             //  1: สร้างศัตรูเลนถนน   (ใช้ Enemy1 / Enemy2)
             for (int i = 0; i < roadLanes; i++)
             {
-                int y = 380 - Cell * i;
+                int y = BaseY - Cell * i;
                 int laneOffset = rnd.Next(0, 300);
                 int startX1 = (laneOffset) % FieldWidth;
                 int startX2 = (startX1 + FieldWidth / 2 + rnd.Next(-80, 80)) % FieldWidth;
@@ -74,7 +94,7 @@ namespace HappyJumpingFrog
             //  2: สร้างซุงเลนแม่น้ำ   (ใช้ Friend1 / Friend2)
             for (int i = 0; i < riverLanes; i++)
             {
-                int y = 340 - Cell * roadLanes - Cell * i;
+                int y = BaseY - Cell - Cell * roadLanes - Cell * i;
 
                 int laneOffset = rnd.Next(0, 400);
                 int startX1 = (laneOffset) % FieldWidth;
@@ -110,6 +130,7 @@ namespace HappyJumpingFrog
         // ลำดับวาด: น้ำ -> ถนน -> วัตถุทั้งหมด (กบวาดทีหลังที่ FormGame)
         public void Draw(Graphics g)
         {
+            DrawBackground(g);
             Water.Draw(g);
             Road.Draw(g);
             foreach (GameObject item in Items)
@@ -118,6 +139,27 @@ namespace HappyJumpingFrog
             }
         }
 
+        // วาดรูปพื้นหลังทีละแถบ ให้แต่ละแถบในรูปไปอยู่ตรงตำแหน่งของมันในเกม
+        private void DrawBackground(Graphics g)
+        {
+            int waterBottom = BaseY - Cell * roadLanes;         // ขอบล่างของน้ำ
+            int roadTop = BaseY - Cell * (roadLanes - 1);       // ขอบบนของถนน
+            int roadBottom = BaseY + Cell;                      // ขอบล่างของถนน
+
+            //       แถบบน (รูป)   แถบล่าง (รูป)    บน (เกม)     ล่าง (เกม)
+            DrawBand(g, 0, srcWaterEnd, 0, waterBottom);   // น้ำ
+            DrawBand(g, srcWaterEnd, srcRoadStart, waterBottom, roadTop);       // หญ้ากลาง
+            DrawBand(g, srcRoadStart, srcRoadEnd, roadTop, roadBottom);    // ถนน
+            DrawBand(g, srcRoadEnd, background.Height, roadBottom, FieldHeight);   // หญ้าล่าง
+        }
+
+        private void DrawBand(Graphics g, int srcTop, int srcBottom, int destTop, int destBottom)
+        {
+            g.DrawImage(background,
+                new Rectangle(0, destTop, FieldWidth, destBottom - destTop),   // ปลายทาง: ช่วง y นี้ของเกม
+                0, srcTop, background.Width, srcBottom - srcTop,               // ต้นทาง: แถบนี้ของรูป
+                GraphicsUnit.Pixel);
+        }
         // FormGame เรียกทุก tick
         public void UpdateSpawn()
         {
@@ -127,7 +169,7 @@ namespace HappyJumpingFrog
             {
                 // สุ่มเลนถนน (0 ถึง roadLanes - 1)
                 int lane = rnd.Next(0, roadLanes);
-                int y = 380 - Cell * lane + 5;
+                int y = BaseY - Cell * lane + 5;
                 int x = rnd.Next(0, 956); // สุ่มตำแหน่งแกน x ในช่วง 0 .. 955
 
                 // สุ่มชนิดไอเท็ม Heart หรือ Time

@@ -141,7 +141,6 @@
             // FormGame
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::HappyJumpingFrog.Properties.Resources.LINE_ALBUM_171069_261024_4;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1185, 600);
             this.Controls.Add(this.panelSide);

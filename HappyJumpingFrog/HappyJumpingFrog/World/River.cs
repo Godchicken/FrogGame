@@ -9,7 +9,7 @@ namespace HappyJumpingFrog
 
         public override void Draw(Graphics g)
         {
-            g.FillRectangle(Brushes.DarkBlue, X, Y, Width, Height);
+            
         }
     }
 }
