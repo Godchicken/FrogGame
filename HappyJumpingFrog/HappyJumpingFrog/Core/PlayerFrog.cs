@@ -11,12 +11,18 @@ namespace HappyJumpingFrog
 
         private readonly int startX;
         private readonly int startY;
+        private Image sprite = Properties.Resources.LINE_ALBUM_171069_261024_frog;
+        private Image spritejump = Properties.Resources.LINE_ALBUM_171069_261024_frogjump;
+        private bool isJumping = false;
+        private int jumpTimer = 0;
+        private DateTime jumpEnd;
 
         public int Score { get; private set; }
         public int Lives { get; private set; } = MaxLives;
 
         // true = tick นี้กบยืนอยู่บนซุง (FormGame จะรีเซ็ตเป็น false ทุก tick)
         public bool OnLog { get; set; }
+
 
         public PlayerFrog(int x, int y) : base(x, y, 40, 40)
         {
@@ -29,12 +35,31 @@ namespace HappyJumpingFrog
         {
             X += dx * Step;
             Y += dy * Step;
+            StartJump();
+
+        }
+
+        private void StartJump()
+        {
+            isJumping = true;
+            jumpEnd = DateTime.Now.AddMilliseconds(200);
+        }
+
+
+        public override void Update()
+        {
+            if (jumpTimer > 0)
+            {
+                jumpTimer--;
+                if (jumpTimer == 0) isJumping = false;
+            }
         }
 
         public void ResetPosition()
         {
             X = startX;
             Y = startY;
+            isJumping = false;
         }
 
         public void Die()
@@ -67,7 +92,10 @@ namespace HappyJumpingFrog
 
         public override void Draw(Graphics g)
         {
-            g.FillRectangle(Brushes.Green, X, Y, Width, Height);
+            if (isJumping && DateTime.Now >= jumpEnd) isJumping = false;
+
+            Image current = isJumping ? spritejump : sprite;
+            g.DrawImage(current, X, Y, Width, Height);
         }
 
         public override void Reset()
@@ -77,5 +105,6 @@ namespace HappyJumpingFrog
             Lives = MaxLives;
             ResetPosition();
         }
+        
     }
 }
