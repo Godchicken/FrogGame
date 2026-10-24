@@ -119,6 +119,7 @@ namespace HappyJumpingFrog
             {
                 frog.AddScore(controller.CalculateScore(gameTimer.ElapsedSecond));
                 gameTimer.ResetElapsed();
+                SoundManager.Play(Sfx.Coin);
             }
             else if (obj is Item)
             {
@@ -133,6 +134,10 @@ namespace HappyJumpingFrog
                     gameTimer.AddSeconds(30);
                     SoundManager.Play(Sfx.Time);
                 }
+            }
+            else if (obj is EnemyMonster) 
+            {
+                if (frog.Lives > 0) SoundManager.Play(Sfx.Horn);
             }
         }
 

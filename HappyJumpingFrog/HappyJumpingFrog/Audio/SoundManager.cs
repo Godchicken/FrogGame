@@ -6,7 +6,7 @@ using System.Windows.Media;
 namespace HappyJumpingFrog
 {
     // รายชื่อเสียงเอฟเฟกต์ทั้งหมดในเกม
-    public enum Sfx { Jump, Splash, GameOver, NextLevel, Win, Heal, Time }
+    public enum Sfx { Jump, Splash, GameOver, NextLevel, Win, Heal, Time, Coin, Horn }
 
     public static class SoundManager
     {
@@ -27,6 +27,8 @@ namespace HappyJumpingFrog
             { Sfx.Win,       "win.wav"      },
             { Sfx.Heal,      "heal.wav"     },
             { Sfx.Time,      "time.wav"     },
+            { Sfx.Coin,      "coin.wav"     },
+            { Sfx.Horn,      "horn.wav"     },
         };
 
         private static readonly Dictionary<Sfx, MediaPlayer[]> pools = new Dictionary<Sfx, MediaPlayer[]>();
