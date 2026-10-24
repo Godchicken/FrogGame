@@ -11,7 +11,9 @@ namespace HappyJumpingFrog
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            SoundManager.Preload();
             Application.Run(new FormMenu());
+            SoundManager.Shutdown();
         }
     }
 

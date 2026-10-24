@@ -19,8 +19,7 @@ namespace HappyJumpingFrog
         private readonly PlayerFrog frog = new PlayerFrog(400, 500);
         private JumpingField field;
         private GameTimer gameTimer;
-        private bool soundOn = true;   // ใครก็ได้ทำเสียงที ยังไม่มีระบบเสียงจริง เก็บสถานะไว้ส่งให้ PauseDialog
-        private bool musicOn = true;
+        
 
         public FormGame()
         {
@@ -34,6 +33,9 @@ namespace HappyJumpingFrog
             gameTimer = new GameTimer(controller.TimeLimit);
             UpdateLabels();
             timer1.Start();
+
+            SoundManager.PlayMusic();
+            FormClosed += (s, e) => SoundManager.StopMusic();
         }
 
         // ---------- รับปุ่ม ----------
@@ -41,13 +43,17 @@ namespace HappyJumpingFrog
         {
             if (!timer1.Enabled) return;   // หยุดอยู่ (Pause/เปิดหน้าต่างอื่น) ไม่รับปุ่ม
 
+            bool moved = true;
+
             switch (e.KeyCode)
             {
                 case Keys.W: case Keys.Up:    frog.Move(0, -1); break;
                 case Keys.S: case Keys.Down:  frog.Move(0, 1);  break;
                 case Keys.A: case Keys.Left:  frog.Move(-1, 0); break;
                 case Keys.D: case Keys.Right: frog.Move(1, 0);  break;
+                default: moved = false; break;
             }
+            if (moved) SoundManager.Play(Sfx.Jump);
             Invalidate();
         }
 
@@ -83,6 +89,7 @@ namespace HappyJumpingFrog
             if (field.Water.Intersects(frog) && !frog.OnLog)
             {
                 frog.Die();           // อยู่ในน้ำแต่ไม่ได้อยู่บนซุง = จมน้ำ
+                if (frog.Lives > 0) SoundManager.Play(Sfx.Splash);
             }
 
             if (gameTimer.IsTimeUp)
@@ -116,8 +123,16 @@ namespace HappyJumpingFrog
             else if (obj is Item)
             {
                 Item pickup = (Item)obj;
-                if (pickup.Type == ItemType.Heart) frog.AddLife();
-                else gameTimer.AddSeconds(30);
+                if (pickup.Type == ItemType.Heart)
+                {
+                    frog.AddLife();
+                    SoundManager.Play(Sfx.Heal);
+                }
+                else
+                {
+                    gameTimer.AddSeconds(30);
+                    SoundManager.Play(Sfx.Time);
+                }
             }
         }
 
@@ -134,6 +149,8 @@ namespace HappyJumpingFrog
         private void ShowGameOver()
         {
             timer1.Stop();
+            SoundManager.StopMusic();
+            SoundManager.Play(Sfx.GameOver);
             using (FormGameOver dlg = new FormGameOver())
             {
                 dlg.FinalScore = frog.Score;
@@ -152,6 +169,7 @@ namespace HappyJumpingFrog
 
             if (controller.NextLevel())
             {
+                SoundManager.Play(Sfx.NextLevel);
                 if (controller.MainLevel != oldMain)
                 {
                     gameTimer.Reset(controller.TimeLimit);   // ขึ้นด่านหลักใหม่ = เวลาใหม่
@@ -163,6 +181,8 @@ namespace HappyJumpingFrog
             }
             else
             {
+                SoundManager.StopMusic();
+                SoundManager.Play(Sfx.Win);
                 using (FormCongratulations dlg = new FormCongratulations())
                 {
                     dlg.FinalScore = frog.Score;
@@ -184,6 +204,7 @@ namespace HappyJumpingFrog
             field = controller.CreateField();
             UpdateLabels();
             timer1.Start();
+            SoundManager.PlayMusic();
         }
 
         private void SubmitScore()
@@ -213,17 +234,22 @@ namespace HappyJumpingFrog
         private void buttonPause_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            SoundManager.PauseMusic();   // พักเพลงระหว่าง Pause
 
             using (PauseDialog dlg = new PauseDialog())
             {
-                dlg.SoundOn = soundOn;
-                dlg.MusicOn = musicOn;
+                dlg.SoundOn = SoundManager.SoundEnabled;
+                dlg.MusicOn = SoundManager.MusicEnabled;
                 DialogResult result = dlg.ShowDialog(this);
-                soundOn = dlg.SoundOn;
-                musicOn = dlg.MusicOn;
+                SoundManager.SoundEnabled = dlg.SoundOn;
+                SoundManager.MusicEnabled = dlg.MusicOn;
 
                 if (result == DialogResult.Abort) Close();   // กลับเมนู
-                else timer1.Start();
+                else
+                {
+                    timer1.Start();
+                    SoundManager.PlayMusic();   // เล่นเพลงต่อ (ถ้าผู้เล่นไม่ได้ปิดเพลง)
+                }
             }
             ActiveControl = null;   // คืนโฟกัสให้ฟอร์ม จะได้รับปุ่ม WASD ต่อ
         }
