@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Text;
 
 namespace HappyJumpingFrog
 {
@@ -6,11 +7,11 @@ namespace HappyJumpingFrog
     public class TargetLotus : GameObject
     {
         public TargetLotus(int x, int y) : base(x, y, 40, 40) { }
-
+        private Image lotus = Properties.Resources.LINE_ALBUM_171069_261025_Lotus;
         public override void Draw(Graphics g)
         {
             if (IsActive)
-                g.FillEllipse(Brushes.Pink, X, Y, Width, Height);
+                g.DrawImage(lotus, X, Y, Width, Height);
         }
 
         public override void OnHit(PlayerFrog frog)

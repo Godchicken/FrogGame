@@ -119,5 +119,15 @@ namespace HappyJumpingFrog.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LINE_ALBUM_171069_261025_Lotus {
+            get {
+                object obj = ResourceManager.GetObject("LINE_ALBUM_171069_261025_Lotus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
