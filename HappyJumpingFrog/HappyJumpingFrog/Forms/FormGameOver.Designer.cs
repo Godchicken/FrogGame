@@ -22,6 +22,8 @@
             this.labelFinalScore = new System.Windows.Forms.Label();
             this.buttonTryAgain = new System.Windows.Forms.Button();
             this.buttonSubmit = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTitle
@@ -83,11 +85,22 @@
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::HappyJumpingFrog.Properties.Resources.LINE_ALBUM_171069_261026_DeadFrog;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(245, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(75, 78);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormGameOver
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(340, 240);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelScoreCaption);
             this.Controls.Add(this.labelFinalScore);
@@ -99,6 +112,7 @@
             this.Name = "FormGameOver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Game Over";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,5 +124,6 @@
         private System.Windows.Forms.Label labelFinalScore;
         private System.Windows.Forms.Button buttonTryAgain;
         private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -153,6 +153,26 @@ namespace HappyJumpingFrog.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LINE_ALBUM_171069_261026_DeadFrog {
+            get {
+                object obj = ResourceManager.GetObject("LINE_ALBUM_171069_261026_DeadFrog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LINE_ALBUM_171069_261026_HandsomeFrog {
+            get {
+                object obj = ResourceManager.GetObject("LINE_ALBUM_171069_261026_HandsomeFrog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LINE_ALBUM_171069_261026_Level3 {
             get {
                 object obj = ResourceManager.GetObject("LINE_ALBUM_171069_261026_Level3", resourceCulture);

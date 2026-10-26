@@ -62,10 +62,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::HappyJumpingFrog.Properties.Resources.LINE_ALBUM_171069_261024_frog;
-            this.pictureBox1.Location = new System.Drawing.Point(241, 99);
+            this.pictureBox1.BackgroundImage = global::HappyJumpingFrog.Properties.Resources.LINE_ALBUM_171069_261026_HandsomeFrog;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(257, 196);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(158, 153);
+            this.pictureBox1.Size = new System.Drawing.Size(126, 146);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
