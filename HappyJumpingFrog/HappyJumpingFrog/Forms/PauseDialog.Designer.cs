@@ -26,7 +26,8 @@
             // 
             // labelTitle
             // 
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.labelTitle.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold);
+            this.labelTitle.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.labelTitle.Location = new System.Drawing.Point(50, 20);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(200, 30);
@@ -37,6 +38,8 @@
             // buttonContinue
             // 
             this.buttonContinue.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonContinue.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Bold);
+            this.buttonContinue.ForeColor = System.Drawing.Color.Green;
             this.buttonContinue.Location = new System.Drawing.Point(80, 70);
             this.buttonContinue.Name = "buttonContinue";
             this.buttonContinue.Size = new System.Drawing.Size(140, 36);
@@ -47,6 +50,8 @@
             // 
             // buttonSound
             // 
+            this.buttonSound.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Bold);
+            this.buttonSound.ForeColor = System.Drawing.Color.Green;
             this.buttonSound.Location = new System.Drawing.Point(80, 115);
             this.buttonSound.Name = "buttonSound";
             this.buttonSound.Size = new System.Drawing.Size(140, 36);
@@ -57,6 +62,8 @@
             // 
             // buttonMusic
             // 
+            this.buttonMusic.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Bold);
+            this.buttonMusic.ForeColor = System.Drawing.Color.Green;
             this.buttonMusic.Location = new System.Drawing.Point(80, 160);
             this.buttonMusic.Name = "buttonMusic";
             this.buttonMusic.Size = new System.Drawing.Size(140, 36);
@@ -68,6 +75,8 @@
             // buttonMenu
             // 
             this.buttonMenu.DialogResult = System.Windows.Forms.DialogResult.Abort;
+            this.buttonMenu.Font = new System.Drawing.Font("Segoe Print", 7.8F, System.Drawing.FontStyle.Bold);
+            this.buttonMenu.ForeColor = System.Drawing.Color.Red;
             this.buttonMenu.Location = new System.Drawing.Point(80, 205);
             this.buttonMenu.Name = "buttonMenu";
             this.buttonMenu.Size = new System.Drawing.Size(140, 36);
@@ -79,6 +88,7 @@
             // PauseDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(300, 260);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.buttonContinue);

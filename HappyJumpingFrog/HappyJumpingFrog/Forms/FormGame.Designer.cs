@@ -34,7 +34,7 @@
             // 
             // panelSide
             // 
-            this.panelSide.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelSide.BackColor = System.Drawing.SystemColors.Info;
             this.panelSide.Controls.Add(this.labelTimeCaption);
             this.panelSide.Controls.Add(this.labelTime);
             this.panelSide.Controls.Add(this.labelLevelCaption);
@@ -52,7 +52,8 @@
             // 
             // labelTimeCaption
             // 
-            this.labelTimeCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelTimeCaption.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
+            this.labelTimeCaption.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.labelTimeCaption.Location = new System.Drawing.Point(20, 30);
             this.labelTimeCaption.Name = "labelTimeCaption";
             this.labelTimeCaption.Size = new System.Drawing.Size(160, 23);
@@ -61,7 +62,8 @@
             // 
             // labelTime
             // 
-            this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.labelTime.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold);
+            this.labelTime.ForeColor = System.Drawing.Color.Green;
             this.labelTime.Location = new System.Drawing.Point(20, 55);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(160, 30);
@@ -70,7 +72,8 @@
             // 
             // labelLevelCaption
             // 
-            this.labelLevelCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelLevelCaption.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
+            this.labelLevelCaption.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.labelLevelCaption.Location = new System.Drawing.Point(20, 110);
             this.labelLevelCaption.Name = "labelLevelCaption";
             this.labelLevelCaption.Size = new System.Drawing.Size(160, 23);
@@ -79,7 +82,8 @@
             // 
             // labelLevel
             // 
-            this.labelLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.labelLevel.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold);
+            this.labelLevel.ForeColor = System.Drawing.Color.Green;
             this.labelLevel.Location = new System.Drawing.Point(20, 135);
             this.labelLevel.Name = "labelLevel";
             this.labelLevel.Size = new System.Drawing.Size(160, 30);
@@ -88,7 +92,8 @@
             // 
             // labelScoreCaption
             // 
-            this.labelScoreCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelScoreCaption.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
+            this.labelScoreCaption.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.labelScoreCaption.Location = new System.Drawing.Point(20, 190);
             this.labelScoreCaption.Name = "labelScoreCaption";
             this.labelScoreCaption.Size = new System.Drawing.Size(160, 23);
@@ -97,7 +102,8 @@
             // 
             // labelScore
             // 
-            this.labelScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.labelScore.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold);
+            this.labelScore.ForeColor = System.Drawing.Color.Green;
             this.labelScore.Location = new System.Drawing.Point(20, 215);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(160, 30);
@@ -106,7 +112,8 @@
             // 
             // labelLivesCaption
             // 
-            this.labelLivesCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.labelLivesCaption.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
+            this.labelLivesCaption.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.labelLivesCaption.Location = new System.Drawing.Point(20, 270);
             this.labelLivesCaption.Name = "labelLivesCaption";
             this.labelLivesCaption.Size = new System.Drawing.Size(160, 23);
@@ -115,7 +122,8 @@
             // 
             // labelLives
             // 
-            this.labelLives.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.labelLives.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold);
+            this.labelLives.ForeColor = System.Drawing.Color.Red;
             this.labelLives.Location = new System.Drawing.Point(20, 295);
             this.labelLives.Name = "labelLives";
             this.labelLives.Size = new System.Drawing.Size(160, 30);

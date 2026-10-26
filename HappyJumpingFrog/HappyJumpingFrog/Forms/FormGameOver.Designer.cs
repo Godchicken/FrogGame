@@ -26,7 +26,8 @@
             // 
             // labelTitle
             // 
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.labelTitle.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.ForeColor = System.Drawing.Color.Red;
             this.labelTitle.Location = new System.Drawing.Point(20, 20);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(300, 36);
@@ -36,18 +37,20 @@
             // 
             // labelScoreCaption
             // 
-            this.labelScoreCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelScoreCaption.Location = new System.Drawing.Point(20, 70);
+            this.labelScoreCaption.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold);
+            this.labelScoreCaption.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.labelScoreCaption.Location = new System.Drawing.Point(20, 72);
             this.labelScoreCaption.Name = "labelScoreCaption";
-            this.labelScoreCaption.Size = new System.Drawing.Size(300, 23);
+            this.labelScoreCaption.Size = new System.Drawing.Size(300, 39);
             this.labelScoreCaption.TabIndex = 1;
             this.labelScoreCaption.Text = "Your score";
             this.labelScoreCaption.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelFinalScore
             // 
-            this.labelFinalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.labelFinalScore.Location = new System.Drawing.Point(20, 95);
+            this.labelFinalScore.Font = new System.Drawing.Font("Segoe Print", 13.8F, System.Drawing.FontStyle.Bold);
+            this.labelFinalScore.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.labelFinalScore.Location = new System.Drawing.Point(20, 111);
             this.labelFinalScore.Name = "labelFinalScore";
             this.labelFinalScore.Size = new System.Drawing.Size(300, 36);
             this.labelFinalScore.TabIndex = 2;
@@ -57,6 +60,8 @@
             // buttonTryAgain
             // 
             this.buttonTryAgain.DialogResult = System.Windows.Forms.DialogResult.Retry;
+            this.buttonTryAgain.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonTryAgain.ForeColor = System.Drawing.Color.ForestGreen;
             this.buttonTryAgain.Location = new System.Drawing.Point(40, 160);
             this.buttonTryAgain.Name = "buttonTryAgain";
             this.buttonTryAgain.Size = new System.Drawing.Size(120, 40);
@@ -68,6 +73,8 @@
             // buttonSubmit
             // 
             this.buttonSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonSubmit.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonSubmit.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.buttonSubmit.Location = new System.Drawing.Point(180, 160);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(120, 40);
@@ -79,6 +86,7 @@
             // FormGameOver
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(340, 240);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelScoreCaption);
