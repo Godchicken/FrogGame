@@ -15,6 +15,7 @@ namespace HappyJumpingFrog
         private Image spritejump = Properties.Resources.LINE_ALBUM_171069_261024_frogjump;
         private bool isJumping = false;
         private int jumpTimer = 0;
+        private float angle = 0;
         private DateTime jumpEnd;
 
         public int Score { get; private set; }
@@ -35,8 +36,22 @@ namespace HappyJumpingFrog
         {
             X += dx * Step;
             Y += dy * Step;
+
+            if (dx > 0) angle = 90;
+            else if (dx < 0) angle = 270;
+            else if (dy > 0) angle = 180;
+            else if (dy < 0) angle = 0;
+
             StartJump();
 
+        }
+
+        public void ResetPosition()
+        {
+            X = startX;
+            Y = startY;
+            isJumping = false;
+            angle = 0;
         }
 
         private void StartJump()
@@ -53,13 +68,6 @@ namespace HappyJumpingFrog
                 jumpTimer--;
                 if (jumpTimer == 0) isJumping = false;
             }
-        }
-
-        public void ResetPosition()
-        {
-            X = startX;
-            Y = startY;
-            isJumping = false;
         }
 
         public void Die()
@@ -95,7 +103,12 @@ namespace HappyJumpingFrog
             if (isJumping && DateTime.Now >= jumpEnd) isJumping = false;
 
             Image current = isJumping ? spritejump : sprite;
-            g.DrawImage(current, X, Y, Width, Height);
+
+            var state = g.Save();                                       
+            g.TranslateTransform(X + Width / 2f, Y + Height / 2f);      
+            g.RotateTransform(angle);                                
+            g.DrawImage(current, -Width / 2f, -Height / 2f, Width, Height);
+            g.Restore(state);
         }
 
         public override void Reset()

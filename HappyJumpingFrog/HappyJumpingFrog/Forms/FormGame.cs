@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -19,7 +20,8 @@ namespace HappyJumpingFrog
         private readonly PlayerFrog frog = new PlayerFrog(GameConfig.Cols / 2 * GameConfig.Cell, GameConfig.BaseY + GameConfig.Cell);
         private JumpingField field;
         private GameTimer gameTimer;
-        
+        private readonly HashSet<Keys> heldKeys = new HashSet<Keys>();
+
 
         public FormGame()
         {
@@ -28,6 +30,8 @@ namespace HappyJumpingFrog
             DoubleBuffered = true;     // กันภาพกะพริบ
             KeyPreview = true;         // ให้ฟอร์มรับปุ่มก่อนคอนโทรลอื่น
             KeyDown += FormGame_KeyDown;
+            KeyUp += FormGame_KeyUp;
+            Deactivate += (s, e) => heldKeys.Clear();
             Paint += FormGame_Paint;
 
             field = controller.CreateField();
@@ -42,20 +46,31 @@ namespace HappyJumpingFrog
         // ---------- รับปุ่ม ----------
         private void FormGame_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!timer1.Enabled) return;   // หยุดอยู่ (Pause/เปิดหน้าต่างอื่น) ไม่รับปุ่ม
+            if (!timer1.Enabled) return;
+
+            // Add คืน false = ปุ่มนี้ถูกกดค้างอยู่แล้ว (auto-repeat) → ข้าม
+            if (!heldKeys.Add(e.KeyCode)) return;
 
             bool moved = true;
 
             switch (e.KeyCode)
             {
-                case Keys.W: case Keys.Up:    frog.Move(0, -1); break;
-                case Keys.S: case Keys.Down:  frog.Move(0, 1);  break;
-                case Keys.A: case Keys.Left:  frog.Move(-1, 0); break;
-                case Keys.D: case Keys.Right: frog.Move(1, 0);  break;
+                case Keys.W: case Keys.Up: frog.Move(0, -1); break;
+                case Keys.S: case Keys.Down: frog.Move(0, 1); break;
+                case Keys.A: case Keys.Left: frog.Move(-1, 0); break;
+                case Keys.D: case Keys.Right: frog.Move(1, 0); break;
                 default: moved = false; break;
             }
-            if (moved) SoundManager.Play(Sfx.Jump);
-            Invalidate();
+            if (moved)
+            {
+                SoundManager.Play(Sfx.Jump);
+                Invalidate();
+            }
+        }
+
+        private void FormGame_KeyUp(object sender, KeyEventArgs e)
+        {
+            heldKeys.Remove(e.KeyCode);
         }
 
         // ---------- วาด ----------
