@@ -16,7 +16,7 @@ namespace HappyJumpingFrog
     public partial class FormGame : Form
     {
         private readonly GameController controller = new GameController();
-        private readonly PlayerFrog frog = new PlayerFrog(400, 540);
+        private readonly PlayerFrog frog = new PlayerFrog(GameConfig.Cols / 2 * GameConfig.Cell, GameConfig.BaseY + GameConfig.Cell);
         private JumpingField field;
         private GameTimer gameTimer;
         
@@ -24,6 +24,7 @@ namespace HappyJumpingFrog
         public FormGame()
         {
             InitializeComponent();
+            ClientSize = new System.Drawing.Size(GameConfig.FieldWidth + GameConfig.PanelWidth, GameConfig.FieldHeight);
             DoubleBuffered = true;     // กันภาพกะพริบ
             KeyPreview = true;         // ให้ฟอร์มรับปุ่มก่อนคอนโทรลอื่น
             KeyDown += FormGame_KeyDown;

@@ -14,7 +14,7 @@ namespace HappyJumpingFrog
         private Image Heart = Properties.Resources.LINE_ALBUM_171069_261025_1_Heart;
         private Image Time = Properties.Resources.LINE_ALBUM_171069_261025_Time;
 
-        public Item(int x, int y, ItemType type) : base(x, y, 30, 30)
+        public Item(int x, int y, ItemType type) : base(x, y, GameConfig.Scale(30), GameConfig.Scale(30))
         {
             Type = type;
         }

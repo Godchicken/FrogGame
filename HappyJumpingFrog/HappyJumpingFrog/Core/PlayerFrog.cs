@@ -6,7 +6,7 @@ namespace HappyJumpingFrog
     // [เจ้าของ: กูอีก]
     public class PlayerFrog : GameObject
     {
-        public const int Step = 40;       // เดินทีละ 1 ช่อง = 40 พิกเซล
+        public const int Step = GameConfig.Cell;       // เดินทีละ 1 ช่อง 
         public const int MaxLives = 5;
 
         private readonly int startX;
@@ -24,7 +24,7 @@ namespace HappyJumpingFrog
         public bool OnLog { get; set; }
 
 
-        public PlayerFrog(int x, int y) : base(x, y, 40, 40)
+        public PlayerFrog(int x, int y) : base(x, y, GameConfig.Cell, GameConfig.Cell)
         {
             startX = x;
             startY = y;

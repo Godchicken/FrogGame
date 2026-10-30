@@ -20,10 +20,10 @@ namespace HappyJumpingFrog
     //
     public class JumpingField
     {
-        public const int FieldWidth = 985;
-        public const int Cell = 40;
-        public const int BaseY = 500;
-        public const int FieldHeight = 600;
+        public const int FieldWidth = GameConfig.FieldWidth;
+        public const int Cell = GameConfig.Cell;
+        public const int BaseY = GameConfig.BaseY;
+        public const int FieldHeight = GameConfig.FieldHeight;
 
         public List<GameObject> Items { get; private set; } = new List<GameObject>();
         public River Water { get; private set; }
@@ -34,13 +34,15 @@ namespace HappyJumpingFrog
         private readonly int riverLanes;
         private readonly int levelSpeed;
         private int spawnTicks;
-        private static readonly Image BgThreeLanes = Properties.Resources.LINE_ALBUM_171069_261024_1;
-        private static readonly Image BgFourLanes = Properties.Resources.LINE_ALBUM_171069_261024_4;
+        private static readonly Image BgLevel1 = Properties.Resources.bg_level1;     // ด่าน 1 (ถนน 3 เลน)
+        private static readonly Image BgLevel23 = Properties.Resources.bg_level23;   // ด่าน 2-3 (ถนน 4 เลน)
 
         private readonly Image background;
-        private readonly int srcWaterEnd;    // ขอบล่างของน้ำ ในรูปต้นฉบับ (พิกเซลของรูป)
-        private readonly int srcRoadStart;   // ขอบบนของถนน
-        private readonly int srcRoadEnd;     // ขอบล่างของถนน
+        private readonly int srcTopGrassEnd;   // ขอบล่างของหญ้าบน (พิกเซลของรูปต้นฉบับ)
+        private readonly int srcWaterEnd;      // ขอบล่างของน้ำ
+        private readonly int srcRoadStart;     // ขอบบนของถนน
+        private readonly int srcRoadEnd;       // ขอบล่างของถนน
+        private readonly int lotusY;           // y ของแถวดอกบัว = ขอบบนของน้ำ
 
         public JumpingField(int roadLanes, int riverLanes, int levelSpeed, int lotusCount)
         {
@@ -48,22 +50,22 @@ namespace HappyJumpingFrog
             this.riverLanes = riverLanes;
             this.levelSpeed = levelSpeed;
             // เลือกรูปตามจำนวนเลนถนน พร้อมตำแหน่งขอบแต่ละแถบในรูป
-            if (roadLanes == 3)
+            if (roadLanes == 3)   // ด่าน 1
             {
-                background = BgThreeLanes;
-                srcWaterEnd = 420; srcRoadStart = 494; srcRoadEnd = 692;
+                background = BgLevel1;
+                srcTopGrassEnd = 174; srcWaterEnd = 481; srcRoadStart = 577; srcRoadEnd = 832;
             }
-            else
+            else                  // ด่าน 2-3
             {
-                background = BgFourLanes;
-                srcWaterEnd = 420; srcRoadStart = 487; srcRoadEnd = 692;
+                background = BgLevel23;
+                srcTopGrassEnd = 161; srcWaterEnd = 472; srcRoadStart = 556; srcRoadEnd = 814;
             }
 
             // y ของแถวดอกบัว = ไต่ขึ้นจาก 340 ทีละ 40 ผ่านเลนถนนและเลนแม่น้ำทั้งหมด
-            int lotusY = (BaseY - Cell) - Cell * (roadLanes + riverLanes);
-
+            lotusY = (BaseY - Cell) - Cell * (roadLanes + riverLanes);
+                
             // น้ำ: เริ่มที่แถวบัว สูงครอบเลนแม่น้ำ + แถวบัว
-            Water = new River(0, 0, FieldWidth, BaseY - Cell * roadLanes);
+            Water = new River(0, lotusY, FieldWidth, Cell * (riverLanes + 1));
 
             // ถนน: y คือเลนบนสุดของถนน
             Road = new Road(0, BaseY - Cell * (roadLanes - 1), FieldWidth, Cell * roadLanes);
@@ -119,8 +121,8 @@ namespace HappyJumpingFrog
                 // ดอกบัวเป้าหมาย: แบ่งความกว้างเป็น (จำนวนบัว + 1) ช่อง วางที่รอยต่อ
                 for (int i = 0; i < lotusCount; i++)
                 {
-                    Items.Add(new TargetLotus(FieldWidth / (lotusCount + 1) * (i + 1), lotusY));
-                }
+                Items.Add(new TargetLotus(FieldWidth / (lotusCount + 1) * (i + 1) - Cell / 2, lotusY));
+            }
             
 
                 spawnTicks = rnd.Next(333, 667);
@@ -169,8 +171,9 @@ namespace HappyJumpingFrog
             {
                 // สุ่มเลนถนน (0 ถึง roadLanes - 1)
                 int lane = rnd.Next(0, roadLanes);
-                int y = BaseY - Cell * lane + 5;
-                int x = rnd.Next(0, 956); // สุ่มตำแหน่งแกน x ในช่วง 0 .. 955
+                int itemSize = GameConfig.Scale(30);
+                int y = BaseY - Cell * lane + (Cell - itemSize) / 2;
+                int x = rnd.Next(0, FieldWidth - itemSize); // สุ่มตำแหน่งแกน x ในช่วง 0 .. 955
 
                 // สุ่มชนิดไอเท็ม Heart หรือ Time
                 ItemType type = (rnd.Next(2) == 0) ? ItemType.Heart : ItemType.Time;

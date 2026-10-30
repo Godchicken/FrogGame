@@ -10,8 +10,9 @@ namespace HappyJumpingFrog
 
         public Enemy1(int x, int y, int speed) : base(x, y, speed)
         {
-            this.Width = 60;
-            this.Height = 32;
+            this.Width = GameConfig.Scale(75);
+            this.Height = GameConfig.Scale(40);
+            this.Y += (GameConfig.Cell - Height) / 2;
         }
 
         public override void Draw(Graphics g)

@@ -10,8 +10,9 @@ namespace HappyJumpingFrog
 
         public Friend2(int x, int y, int speed) : base(x, y, speed)
         {
-            this.Width = 75;
-            this.Height = 32;
+            this.Width = GameConfig.Scale(85);
+            this.Height = GameConfig.Scale(35);
+            this.Y += (GameConfig.Cell - Height) / 2;
         }
 
         public override void Draw(Graphics g)
