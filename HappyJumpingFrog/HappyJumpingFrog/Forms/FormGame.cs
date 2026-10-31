@@ -48,6 +48,23 @@ namespace HappyJumpingFrog
         {
             if (!timer1.Enabled) return;
 
+#if DEBUG
+            // ปุ่มลัดสำหรับทดสอบ (มีเฉพาะตอนรันแบบ Debug)
+            if (e.KeyCode == Keys.F2)   // เก็บดอกบัวทุกดอกทันที (ผ่านด่านปัจจุบัน)
+            {
+                foreach (TargetLotus lotus in field.Items.OfType<TargetLotus>())
+                {
+                    lotus.OnHit(frog);
+                }
+                return;
+            }
+            if (e.KeyCode == Keys.F3)   // ชีวิตหมดทันที (ทดสอบหน้า Game Over)
+            {
+                while (frog.Lives > 0) frog.Die();
+                return;
+            }
+#endif
+
             // Add คืน false = ปุ่มนี้ถูกกดค้างอยู่แล้ว (auto-repeat) → ข้าม
             if (!heldKeys.Add(e.KeyCode)) return;
 
@@ -151,7 +168,7 @@ namespace HappyJumpingFrog
                     SoundManager.Play(Sfx.Time);
                 }
             }
-            else if (obj is EnemyMonster) 
+            else if (obj is EnemyMonster)
             {
                 if (frog.Lives > 0) SoundManager.Play(Sfx.Horn);
             }
