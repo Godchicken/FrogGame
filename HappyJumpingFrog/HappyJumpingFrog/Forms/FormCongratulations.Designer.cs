@@ -17,7 +17,6 @@
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCongratulations));
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelScoreCaption = new System.Windows.Forms.Label();
             this.labelFinalScore = new System.Windows.Forms.Label();
@@ -30,7 +29,7 @@
             this.labelTitle.AutoSize = true;
             this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.labelTitle.Location = new System.Drawing.Point(102, 69);
+            this.labelTitle.Location = new System.Drawing.Point(102, 38);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(117, 29);
             this.labelTitle.TabIndex = 0;
@@ -42,7 +41,7 @@
             this.labelScoreCaption.AutoSize = true;
             this.labelScoreCaption.BackColor = System.Drawing.Color.Transparent;
             this.labelScoreCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.labelScoreCaption.Location = new System.Drawing.Point(102, 103);
+            this.labelScoreCaption.Location = new System.Drawing.Point(102, 67);
             this.labelScoreCaption.Name = "labelScoreCaption";
             this.labelScoreCaption.Size = new System.Drawing.Size(106, 25);
             this.labelScoreCaption.TabIndex = 1;
@@ -54,7 +53,7 @@
             this.labelFinalScore.AutoSize = true;
             this.labelFinalScore.BackColor = System.Drawing.Color.Transparent;
             this.labelFinalScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
-            this.labelFinalScore.Location = new System.Drawing.Point(147, 128);
+            this.labelFinalScore.Location = new System.Drawing.Point(147, 92);
             this.labelFinalScore.Name = "labelFinalScore";
             this.labelFinalScore.Size = new System.Drawing.Size(27, 29);
             this.labelFinalScore.TabIndex = 2;
@@ -64,7 +63,7 @@
             // buttonPlayAgain
             // 
             this.buttonPlayAgain.DialogResult = System.Windows.Forms.DialogResult.Retry;
-            this.buttonPlayAgain.Location = new System.Drawing.Point(40, 160);
+            this.buttonPlayAgain.Location = new System.Drawing.Point(39, 124);
             this.buttonPlayAgain.Name = "buttonPlayAgain";
             this.buttonPlayAgain.Size = new System.Drawing.Size(120, 40);
             this.buttonPlayAgain.TabIndex = 3;
@@ -75,7 +74,7 @@
             // buttonSubmit
             // 
             this.buttonSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonSubmit.Location = new System.Drawing.Point(180, 160);
+            this.buttonSubmit.Location = new System.Drawing.Point(165, 124);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(120, 40);
             this.buttonSubmit.TabIndex = 4;
@@ -86,6 +85,7 @@
             // FormCongratulations
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackgroundImage = global::HappyJumpingFrog.Properties.Resources.congrats;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(340, 240);
             this.Controls.Add(this.labelTitle);
@@ -99,6 +99,7 @@
             this.Name = "FormCongratulations";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Congratulations!";
+            this.Load += new System.EventHandler(this.FormCongratulations_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -26,5 +26,10 @@ namespace HappyJumpingFrog
         {
             DialogResult = DialogResult.OK;
         }
+
+        private void FormCongratulations_Load(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
