@@ -2,7 +2,7 @@
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: หลุยส์] ซุงแบบที่ 2 (คาปิบาร่าเหมือนกันแต่ชื่อเจมส์)
+    // [เจ้าของ: หลุยส์] ซุงแบบที่ 2 (ปลา)
     public class Friend2 : FriendMonster
     {
         private static readonly Image ImgLeft = Image.FromFile("Resources/fish_left.png");
