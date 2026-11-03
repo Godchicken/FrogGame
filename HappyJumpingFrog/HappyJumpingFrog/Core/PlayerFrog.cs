@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: กูอีก]
+    
     public class PlayerFrog : GameObject
     {
         public const int Step = GameConfig.Cell;       // เดินทีละ 1 ช่อง 

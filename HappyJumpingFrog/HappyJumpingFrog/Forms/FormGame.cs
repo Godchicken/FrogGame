@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace HappyJumpingFrog
 {
-    // [เจ้าของ: กูเอง] หน้าเล่นเกม = "ตัวรวมทุกส่วน"
+    // หน้าเล่นเกม = "ตัวรวมทุกส่วน"
     //
     // ลูปเกม (timer1_Tick ทุก 30 ms):
     //   1. นับเวลา
